@@ -1,0 +1,28 @@
+{
+  "name": "cabo-wet-paw-graph",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cabo Wet Paw: recomendaciones y referidos sobre Neo4j AuraDB",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,magenta \"npm run dev -w apps/api\" \"npm run dev -w apps/web\"",
+    "db:constraints": "tsx db/constraints.ts",
+    "seed": "tsx db/seed.ts",
+    "smoke": "tsx scripts/smoke.ts",
+    "typecheck": "npm run typecheck -w apps/api && npm run typecheck -w apps/web",
+    "docs:consultas": "tsx scripts/generar-docs-consultas.ts"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "concurrently": "10.0.7",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
+  }
+}
